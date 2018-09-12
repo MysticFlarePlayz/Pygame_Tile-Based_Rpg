@@ -6,16 +6,12 @@ class Player(p.sprite.Sprite):
         self.image = p.Surface((TILESIZE, TILESIZE))
         self.image.fill(green)
         self.rect = self.image.get_rect()
-        self.rect.x = 24
-        self.rect.y = 24
-        self.speedx = 0
-        self.speedy = 0
+        self.x = 24
+        self.y = 24
+    def move(self, x=0, y=0):
+        self.x += x
+        self.y += y
     def update(self):
-        self.speedx = 0
-        key = p.key.get_pressed()
-        if key[p.K_RIGHT]:
-            self.speedx = 3
-        if key[p.K_LEFT]:
-            self.speedx = -3
-        self.rect.x += self.speedx
-player = Player()
+        self.rect.x = self.x * TILESIZE
+        self.rect.y = self.y  * TILESIZE
+
